@@ -1,8 +1,8 @@
-const moongose =require("mongoose")
+const mongose =require("mongoose")
 
-const Userschema = new moongose.Schema({
-    firstName:{
-        type:String.apply,
+const Userschema = new mongose.Schema({
+    username:{
+        type:String,
         required:true
     },
     email:{
@@ -13,6 +13,10 @@ const Userschema = new moongose.Schema({
         type:String
     },
     role:{
-        type:moongose.Schema.Types.ObjectId("role")
-    }
+        type:mongose.Schema.Types.ObjectId,
+        ref:"role"
+      }
 })
+const UserModel = new mongose.model("user",Userschema)
+
+module.exports = UserModel

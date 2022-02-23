@@ -6,9 +6,6 @@ const mongoose = require("mongoose")
 let RoleSchema = new mongoose.Schema({
     roleName:{
         type:String
-    },
-    roleDescription:{
-        type:Boolean
     }
 })
 
