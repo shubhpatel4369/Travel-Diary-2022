@@ -1,3 +1,4 @@
+const bcrypt = require("bcrypt")
 const UserModel = require("../model/usermodel")
 
 //add post
@@ -5,12 +6,16 @@ module.exports.addUser = function(req,res){
     let username = req.body.username
     let email =req.body.email
     let password =req.body.password
-    let role =req.body.role
+    
+    let encpassword = bcrypt.hashSync(password,10)
+
+    let role = req.body.role
+
 
     let user = new UserModel({
         username: username,
         email: email,
-        password : password,
+        password : encpassword,
         role : role
     })
 
@@ -54,13 +59,12 @@ UserModel.find().populate("role").exec(function(err,data){
        }
 
 // //update
+ module.exports.Updateuser=function(req,res){
+       let paramuserId=req.body.userId
+       let parampassword=req.body.password
+       let paramemail=req.body.email
 
-   module.exports.Updateuser=function(req,res){
-       let userId=req.body.userId
-       let username=req.body.username
-       let email=req.body.email
-
-       UserModel.updateOne({_id:userId},{username:username,email:email},
+ UserModel.updateOne({_id:paramuserId},{parampassword:parampassword,paramemail:paramemail},
        function(err,data){
            if(err){
                res.json({msg:"nathi thayu",status:-1,data:err})
@@ -71,6 +75,32 @@ UserModel.find().populate("role").exec(function(err,data){
 
        })
    }
+
+//login
+
+module.exports.login = function(req,res){
+
+    let param_email = req.body.email
+    let param_password  = req.body.password 
+
+    let isCorrect = false; 
+
+    UserModel.findOne({email:param_email},function(err,data){
+        if(data){
+            let ans =  bcrypt.compareSync(param_password,data.password)
+            if(ans == true){
+                    isCorrect = true
+            }
+        }
+    
+        if (isCorrect == false) {
+            res.json({ msg: "Invalid Credentials...", data: req.body, status: -1 })//-1  [ 302 404 500 ]
+        } else {
+            res.json({ msg: "Login....", data: data, status: 200 })//http status code 
+        }
+    })
+
+    }
 
 
 
