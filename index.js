@@ -4,6 +4,12 @@ const mongoose = require("mongoose")
 const SessionController = require("./Controller/Session_Controllers")
 const roleController = require("./Controller/role-Controller")
 const userController = require("./Controller/user-controller")
+const countryController=require("./Controller/country_Controller")
+const stateController=require("./Controller/state_Controller")
+const cityController= require("./Controller/city_Controller")
+const hotelController=require("./Controller/hotel_Controller")
+const traveldiaryController=require("./Controller/traveldiary_Controller")
+const tripplanController=require("./Controller/tripplan_Controller")
 const app = express()
 
 //middle ware
@@ -41,6 +47,43 @@ app.post("/users",userController.addUser)
 app.get("/users",userController.getAllusers)
 app.delete("/users/:userId",userController.deleteUser)
 app.put("/users",userController.Updateuser)
+
+
+//Country
+app.post("/countries",countryController.addCountry)
+app.get("/countries",countryController.getAllCountry)
+app.delete("/countries/:countryId",countryController.deleteCountry)
+app.put("/countries",countryController.UpdateCountry)
+
+//State
+app.post("/states",stateController.addState)
+app.get("/states",stateController.getAllState)
+app.delete("/states/:stateId",stateController.deleteState)
+app.put("/states",stateController.UpdateState)
+
+//city
+app.post("/cities",cityController.addCity)
+app.get("/cities",cityController.getAllCity)
+app.delete("/cities/:cityId",cityController.deleteCity)
+app.put("/cities",cityController.UpdateCity)
+
+//hotel
+app.post("/hotels",hotelController.addHotel)
+app.get("/hotels",hotelController.getAllHotel)
+app.delete("/hotels",hotelController.deleteHotel)
+app.put("/hotels",hotelController.UpdateHotel)
+
+//traveldiary
+app.post("/traveldiaries",traveldiaryController.addTraveldiary)
+app.get("/traveldiaries",traveldiaryController.getAllTraveldiary)
+app.delete("/traveldiaries",traveldiaryController.deleteTraveldiary)
+app.put("/traveldiaries",traveldiaryController.UpdateTraveldiary)
+
+//tripplan
+app.post("/tripplans",tripplanController.addTripPlan)
+app.get("/tripplans",tripplanController.getAllTripPlan)
+app.delete("/tripplans",tripplanController.deleteTripPlan)
+app.put("/tripplans",tripplanController.UpdateTripPlan)
 
 
 
