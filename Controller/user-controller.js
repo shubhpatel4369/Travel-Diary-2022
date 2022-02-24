@@ -46,7 +46,6 @@ UserModel.find().populate("role").exec(function(err,data){
     module.exports.deleteUser = function(req,res){
         let userId = req.params.userId
 
-        //delete from role where roleId = 1
         UserModel.deleteOne({"_id":userId},function(err,data){
 
             if(err){

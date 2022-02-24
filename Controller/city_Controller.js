@@ -42,9 +42,6 @@ module.exports.getAllCity= function(req,res){
 module.exports.deleteCity = function(req,res){
     let CityId = req.params.CityId
 
-
-
-//delete from role where CountryId = 1
     CityModel.deleteOne({"_id":CityId},function(err,data){
         if(err){
             res.json({msg:"not deleted",status:-1,data:err})

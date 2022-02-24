@@ -40,7 +40,6 @@ module.exports.getAllState = function(req,res){
 module.exports.deleteState = function(req,res){
     let StateId = req.params.StateId
 
-    //delete from role where CountryId = 1
     StateModel.deleteOne({"_id":StateId},function(err,data){
 
         if(err){

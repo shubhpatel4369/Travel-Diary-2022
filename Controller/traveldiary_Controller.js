@@ -7,7 +7,7 @@ module.exports.addTraveldiary = function(req,res){
     let email=req.body.email
     let feedback=req.body.feedback
 
-let traveldiary = new TraveldiaryModel({
+let Traveldiary = new TraveldiaryModel({
         username:username,
         email:email,
         feedback:feedback
@@ -40,7 +40,7 @@ module.exports.deleteTraveldiary = function(req,res){
     let username = req.params.username
     let feedback = req.params.feedback
 
-    //delete
+
     CountryModel.deleteOne({"_id":username},function(err,data){
 
         if(err){

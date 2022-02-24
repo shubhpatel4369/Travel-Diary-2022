@@ -45,7 +45,7 @@ module.exports.getAllHotel= function(req,res){
 
 module.exports.deleteHotel = function(req,res){
     let HotelName = req.params.HotelName
-//delete from role where CountryId = 1
+
     HotelModel.deleteOne({"_id":HotelName},function(err,data){
         if(err){
             res.json({msg:"not deleted",status:-1,data:err})

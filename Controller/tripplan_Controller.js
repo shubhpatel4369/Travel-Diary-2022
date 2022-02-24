@@ -52,7 +52,7 @@ module.exports.deleteTripPlan = function(req,res){
     let Placestovisit = req.params.Placestovisit
     let Comment = req.params.Comment 
 
-    //delete
+   
     TripPlamModel.deleteOne({"_id":userId},function(err,data){
 
         if(err){

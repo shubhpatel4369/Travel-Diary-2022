@@ -41,8 +41,7 @@ module.exports.getAllCountry = function(req,res){
 //delete
 module.exports.deleteCountry = function(req,res){
     let CountryId = req.params.CountryId
-
-    //delete from role where CountryId = 1
+    
     CountryModel.deleteOne({"_id":CountryId},function(err,data){
 
         if(err){
