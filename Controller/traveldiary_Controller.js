@@ -13,7 +13,7 @@ let Traveldiary = new TraveldiaryModel({
         feedback:feedback
 })
 
-   TraveldiaryModel.save(function(err,data){
+   Traveldiary.save(function(err,data){
     if(err){
         res.json({msg:"not added",status:-1,data:err})
     }else{

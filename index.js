@@ -70,20 +70,20 @@ app.put("/cities",cityController.UpdateCity)
 //hotel
 app.post("/hotels",hotelController.addHotel)
 app.get("/hotels",hotelController.getAllHotel)
-app.delete("/hotels",hotelController.deleteHotel)
+app.delete("/hotels/:hotelname",hotelController.deleteHotel)
 app.put("/hotels",hotelController.UpdateHotel)
 
 //traveldiary
 app.post("/traveldiaries",traveldiaryController.addTraveldiary)
 app.get("/traveldiaries",traveldiaryController.getAllTraveldiary)
-app.delete("/traveldiaries",traveldiaryController.deleteTraveldiary)
+app.delete("/traveldiaries/:username",traveldiaryController.deleteTraveldiary)
 app.put("/traveldiaries",traveldiaryController.UpdateTraveldiary)
 
 //tripplan
-app.post("/tripplans",tripplanController.addTripPlan)
-app.get("/tripplans",tripplanController.getAllTripPlan)
-app.delete("/tripplans",tripplanController.deleteTripPlan)
-app.put("/tripplans",tripplanController.UpdateTripPlan)
+app.post("/tripplans",tripplanController.addTripplan)
+app.get("/tripplans",tripplanController.getAllTripplan)
+app.delete("/tripplans/:userId",tripplanController.deleteTripplan)
+app.put("/tripplans",tripplanController.UpdateTripplan)
 
 
 
