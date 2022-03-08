@@ -46,14 +46,14 @@ module.exports.deleteRoles = function(req,res){
 //update
 module.exports.updateRoles = function(req,res){
 
-    let roleId = req.body.roleId
+    let roleId = req.params.roleId
     let roleName = req.body.roleName
 
-    RoleModel.updateOne({_id:roleId},{roleName:roleName},function(err,roles){
+    RoleModel.updateOne({_id:roleId},{roleName:roleName},function(err,success){
         if(err){
-            res.json({msg:"updated!!!",status:-1,data:err})
+            res.json({msg:" not updated!!!",status:-1,data:err})
         }else{
-            res.json({msg:"roles....",status:200,data:roles})
+            res.json({msg:"roles....",status:200,data:success})
         }
     })
     }

@@ -43,7 +43,7 @@ app.post("/saveuser",SessionController.saveuser)
 app.post("/roles",roleController.addRole)
 app.get("/roles",roleController.getAllRoles)
 app.delete("/roles/:roleId",roleController.deleteRoles)
-app.put("/roles",roleController.updateRoles)
+app.put("/roles/:roleId",roleController.updateRoles)
 
 //user
 app.post("/users",userController.addUser)
@@ -100,8 +100,8 @@ app.put("/tripplans",tripplanController.UpdateTripplan)
  
 //server
 
-app.listen(8000,function(){
-      console.log("Server started on 8000");
+app.listen(4000,function(){
+      console.log("Server started on 4000");
   })
 
   
