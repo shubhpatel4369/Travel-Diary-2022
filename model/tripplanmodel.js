@@ -3,7 +3,7 @@ const mongoose = require("mongoose")
 const TripplanSchema = new mongoose.Schema({
     userId:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:"userId"
+        ref:"user"
     },
     CountryName:{
         type:String

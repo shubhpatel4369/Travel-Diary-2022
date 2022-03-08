@@ -11,7 +11,7 @@ const StateSchema = new mongoose.Schema({
     CountryId:{
       
         type:mongoose.Schema.Types.ObjectId,
-        ref:"CountryId"
+        ref:"country"
     }
 
 })

@@ -20,12 +20,12 @@ const hotelSchema = new mongoose.Schema({
     StateId:{
         
         type:mongoose.Schema.Types.ObjectId,
-        ref:"StateId"
+        ref:"State"
     },
 
     CityId:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:"CityId"
+        ref:"City"
     }
 
 })

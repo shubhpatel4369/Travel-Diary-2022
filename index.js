@@ -1,5 +1,7 @@
 const express = require('express')
 const mongoose = require("mongoose")
+var cors = require('cors')
+
 
 const SessionController = require("./Controller/Session_Controllers")
 const roleController = require("./Controller/role-Controller")
@@ -11,6 +13,7 @@ const hotelController=require("./Controller/hotel_Controller")
 const traveldiaryController=require("./Controller/traveldiary_Controller")
 const tripplanController=require("./Controller/tripplan_Controller")
 const app = express()
+app.use(cors())
 
 //middle ware
 app.use(express.json())//mobile --> accept json data from request and set data into body
@@ -28,7 +31,7 @@ mongoose.connect('mongodb://localhost:27017/traveldiary',function(err){
 
 //urls
 app.get("/",function(req,res){
-     res.write("wlcome")
+     res.write("welcome")
      res.end()
 })
 
@@ -70,7 +73,7 @@ app.put("/cities",cityController.UpdateCity)
 //hotel
 app.post("/hotels",hotelController.addHotel)
 app.get("/hotels",hotelController.getAllHotel)
-app.delete("/hotels/:hotelname",hotelController.deleteHotel)
+app.delete("/hotels/:hotelId",hotelController.deleteHotel)
 app.put("/hotels",hotelController.UpdateHotel)
 
 //traveldiary
@@ -97,8 +100,8 @@ app.put("/tripplans",tripplanController.UpdateTripplan)
  
 //server
 
-app.listen(3000,function(){
-      console.log("Server started on 3000");
+app.listen(8000,function(){
+      console.log("Server started on 8000");
   })
 
   

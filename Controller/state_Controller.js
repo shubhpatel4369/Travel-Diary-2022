@@ -3,12 +3,10 @@ const StateModel = require("../model/statemodel")
 //add post
 module.exports.addState=function(req,res){
     let StateName=req.body.StateName
-    let StateId=req.body.StateId
     let  CountryId=req.body.CountryId
 
     let State = new StateModel({
        StateName:StateName,
-       StateId:StateId,
        CountryId:CountryId
     })
 
@@ -58,7 +56,7 @@ module.exports.deleteState = function(req,res){
     let Statename=req.body.Statename
     let CountryId=req.body.CountryId
 
-    StateModel.updateOne({_id:StateId},{Statename:Statename,StateId:StateId},
+    StateModel.updateOne({_id:StateId},{Statename:Statename,CountryId:CountryId},
         function(err,data){
             if(err){
                 res.json({msg:"nathi thayu",status:-1,data:err})

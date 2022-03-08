@@ -25,7 +25,7 @@ let Traveldiary = new TraveldiaryModel({
 //list
 
 module.exports.getAllTraveldiary = function(req,res){
-    TraveldiaryModel.find().populate("user").exec(function(err,data){
+    TraveldiaryModel.find(function(err,data){
         if(err){
             res.json({msg:"Something went wrong!!!",status:-1,data:err})
         }else{
@@ -38,10 +38,10 @@ module.exports.getAllTraveldiary = function(req,res){
 
 module.exports.deleteTraveldiary = function(req,res){
     let username = req.params.username
-    let feedback = req.params.feedback
+    //let feedback = req.params.feedback
 
 
-    CountryModel.deleteOne({"_id":username},function(err,data){
+    TraveldiaryModel.deleteOne({"_id":username},function(err,data){
 
         if(err){
             res.json({msg:"swr",status:-1,data:err})
@@ -57,9 +57,9 @@ module.exports.deleteTraveldiary = function(req,res){
    module.exports.UpdateTraveldiary=function(req,res){
     let username=req.body.username
     let email=req.body.email
-    let CountryId=req.body.CountryId
+    
 
-    traveldiaryModel.updateOne({_id:username},{username:username,feedback:feedback},
+    TraveldiaryModel.updateOne({_id:username},{email:email,feedback:feedback},
         function(err,data){
             if(err){
                 res.json({msg:"nathi thayu",status:-1,data:err})

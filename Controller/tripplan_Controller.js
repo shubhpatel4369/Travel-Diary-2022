@@ -3,7 +3,7 @@ const TripplanModel = require("../model/tripplanmodel")
 //add
 
 module.exports.addTripplan = function(req,res){
-    let userId = req.body.userId
+   // let userId = req.body.userId
     let CountryName = req.body.CountryName
     let StateName = req.body.StateName
     let HotelName = req.body.HotelName
@@ -13,7 +13,7 @@ module.exports.addTripplan = function(req,res){
 
 
 let Tripplan = new TripplanModel({
-    userId:userId,
+   // userId:userId,
     CountryName:CountryName,
     StateName:StateName,
     HotelName:HotelName,
@@ -46,15 +46,17 @@ module.exports.getAllTripplan = function(req,res){
 //delete
 
 module.exports.deleteTripplan = function(req,res){
-    let StateName = req.params.StateName
-    let CountryName = req.params.CountryName
-    let HotelName = req.params.HotelName
-    let Placestovisit = req.params.Placestovisit
-    let Comment = req.params.Comment 
+    // let StateName = req.params.StateName
+    // let CountryName = req.params.CountryName
+    let userId=req.body.userId
+    // let HotelName = req.params.HotelName
+    // let  Duration = req.params.Duration
+    // let Placestovisit = req.params.Placestovisit
+    // let Comment = req.params.Comment 
 
    
     TripplanModel.deleteOne({"_id":userId},function(err,data){
-
+        // let userId = req.params.userId
         if(err){
             res.json({msg:"swr",status:-1,data:err})
         }else{
@@ -67,13 +69,15 @@ module.exports.deleteTripplan = function(req,res){
    //update
 
    module.exports.UpdateTripplan=function(req,res){
-    let Statename=req.body.Statename
+    let StateName=req.body.Statename
+    let userId=req.body.userId
     let CountryName=req.body.CountryName
     let HotelName=req.body.HotelName
+    let Duration=req.body.Duration
     let Comment=req.body.Comment
     let Placestovisit=req.body.Placestovisit
 
-    TripplanModel.updateOne({_id:userId},{Statename:Statename,CountryName:CountryName,Comment:Comment,HotelName:HotelName},
+    TripplanModel.updateOne({_id:userId},{Duration:Duration,StateName:StateName,CountryName:CountryName,Comment:Comment,HotelName:HotelName,Placestovisit:Placestovisit},
         function(err,data){
             if(err){
                 res.json({msg:"nathi thayu",status:-1,data:err})

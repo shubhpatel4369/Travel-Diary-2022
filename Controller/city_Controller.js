@@ -4,13 +4,11 @@ const CityModel = require("../model/citymodel")
 
 module.exports.addCity=function(req,res){
     let CityName=req.body.CityName
-    let CityId= req.body.CityId
     let StateId=req.body.StateId
 
 
     let City = new CityModel({
         CityName:CityName,
-        CityId:CityId,
         StateId:StateId
     })
 
@@ -28,7 +26,7 @@ module.exports.addCity=function(req,res){
 //list
 module.exports.getAllCity= function(req,res){
 
-    CityModel.find().populate("City").exec(function(err,data){
+    CityModel.find().populate("State").exec(function(err,data){
         if(err){
             res.json({msg:"not found",status:-1,data:err})
         }else{
@@ -57,11 +55,11 @@ module.exports.deleteCity = function(req,res){
 
 //update
 module.exports.UpdateCity = function(req,res){
-    let CityId=req.body.CityId
+    
     let Cityname=req.body.Cityname
     let StateId=req.body.StateId
 
-    CityModel.updateOne({_id:CityId},{Cityname:Cityname,CityId:CityId},
+    CityModel.updateOne({_id:CityId},{Cityname:Cityname,StateId:StateId},
     function(err,data){
         if(err){
             res.json({msg:"not updated",status:-1,data:err})

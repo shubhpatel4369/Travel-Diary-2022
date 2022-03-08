@@ -3,13 +3,11 @@ const CountryModel = require("../model/countrymodel")
 //add post
 module.exports.addCountry=function(req,res){
     let CountryName=req.body.CountryName
-    let CountryId=req.body.CountryId
     let latitude=req.body.latitude
     let longitude=req.body.longitude
 
     let country = new CountryModel({
         CountryName:CountryName,
-        CountryId:CountryId,
         latitude:latitude,
         longitude:longitude
 
@@ -27,7 +25,7 @@ module.exports.addCountry=function(req,res){
 //list
 
 module.exports.getAllCountry = function(req,res){
-    CountryModel.find().populate("user").exec(function(err,data){
+    CountryModel.find(function(err,data){
         if(err){
             res.json({msg:"Something went wrong!!!",status:-1,data:err})
         }else{
@@ -62,10 +60,10 @@ module.exports.deleteCountry = function(req,res){
         let latitude=req.body.latitude
         let longitude=req.body.longitude
  
-        CountryModel.updateOne({_id:CountryId},{Countryname:Countryname,CountryId:CountryId},
+        CountryModel.updateOne({_id:CountryId},{Countryname:Countryname,latitude:latitude,longitude:longitude},
         function(err,data){
             if(err){
-                res.json({msg:"nathi thayu",status:-1,data:err})
+                res.json({msg:"Something Went Wrong",status:-1,data:err})
  
             }else{
                 res.json({msg:"done",status:200,data:data})

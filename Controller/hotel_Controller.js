@@ -32,7 +32,7 @@ module.exports.addHotel=function(req,res){
 
 module.exports.getAllHotel= function(req,res){
 
-    HotelModel.find().populate("Hotel").exec(function(err,data){
+    HotelModel.find().populate("State").populate("City").exec(function(err,data){
         if(err){
             res.json({msg:"not found",status:-1,data:err})
         }else{
@@ -44,9 +44,9 @@ module.exports.getAllHotel= function(req,res){
 //delete
 
 module.exports.deleteHotel = function(req,res){
-    let HotelName = req.params.HotelName
+    let HotelId = req.params.HotelId
 
-    HotelModel.deleteOne({"_id":HotelName},function(err,data){
+    HotelModel.deleteOne({"_id":HotelId},function(err,data){
         if(err){
             res.json({msg:"not deleted",status:-1,data:err})
 
@@ -66,7 +66,7 @@ module.exports.UpdateHotel = function(req,res){
     let CityId=req.body.CityId
     let StateId=req.body.StateId
 
-    HotelModel.updateOne({_id:HotelName},{Hotelname:Hotelname,ContactNo:ContactNo,HotelAddress:HotelAddress},
+    HotelModel.updateOne({_id:HotelId},{HotelName:HotelName,ContactNo:ContactNo,HotelAddress:HotelAddress,StateId:StateId,CityId:CityId},
     function(err,data){
         if(err){
             res.json({msg:"not updated",status:-1,data:err})

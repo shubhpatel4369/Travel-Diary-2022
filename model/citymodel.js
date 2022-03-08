@@ -10,7 +10,7 @@ const CitySchema = new mongoose.Schema({
     },
     StateId:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:"StateId"
+        ref:"State"
 
     }
     })
